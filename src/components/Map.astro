@@ -1,0 +1,48 @@
+---
+// TODO: remplacer par l'adresse réelle une fois confirmée, ou passer à une
+// carte Leaflet + OpenStreetMap si un style plus personnalisé est souhaité
+// (voir architecture.md — "Services externes nécessaires").
+interface Props {
+  adresse: string;
+  label?: string;
+}
+
+const { adresse, label = 'Voir sur la carte' } = Astro.props;
+const query = encodeURIComponent(adresse);
+---
+
+<div class="map card">
+  <iframe
+    title={`Carte — ${adresse}`}
+    src={`https://www.google.com/maps?q=${query}&output=embed`}
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+  <a
+    class="map__link"
+    href={`https://www.google.com/maps/dir/?api=1&destination=${query}`}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {label} →
+  </a>
+</div>
+
+<style>
+  .map {
+    padding: 0;
+    overflow: hidden;
+  }
+  .map iframe {
+    width: 100%;
+    height: 320px;
+    border: 0;
+    display: block;
+  }
+  .map__link {
+    display: block;
+    padding: var(--space-2) var(--space-3);
+    text-decoration: none;
+    font-weight: 600;
+  }
+</style>

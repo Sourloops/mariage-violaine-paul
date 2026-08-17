@@ -1,0 +1,45 @@
+---
+import config from '../data/config.json';
+
+interface Props {
+  label?: string;
+}
+
+const { label = 'Ajouter à mon calendrier' } = Astro.props;
+const { dateMariage, ceremonie, reception } = config;
+---
+
+<a class="add-to-calendar" href="/mariage.ics" download data-date={dateMariage}>
+  {label}
+</a>
+
+<style>
+  .add-to-calendar {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius);
+    background: var(--color-accent);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .add-to-calendar:hover {
+    opacity: 0.9;
+  }
+</style>
+
+<!--
+  TODO: générer réellement public/mariage.ics à partir de config.json
+  (date, lieu de cérémonie/réception) une fois les infos confirmées.
+  Exemple de contenu minimal :
+
+  BEGIN:VCALENDAR
+  VERSION:2.0
+  BEGIN:VEVENT
+  SUMMARY:Mariage de Violaine & Paul
+  DTSTART:20270619T140000
+  DTEND:20270620T020000
+  LOCATION:À confirmer
+  END:VEVENT
+  END:VCALENDAR
+-->

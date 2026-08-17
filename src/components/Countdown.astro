@@ -1,0 +1,75 @@
+---
+import config from '../data/config.json';
+
+const targetDate = config.dateMariage;
+---
+
+<div class="countdown" data-target={targetDate}>
+  <div class="countdown__item">
+    <span class="countdown__value" data-unit="days">--</span>
+    <span class="countdown__label">jours</span>
+  </div>
+  <div class="countdown__item">
+    <span class="countdown__value" data-unit="hours">--</span>
+    <span class="countdown__label">heures</span>
+  </div>
+  <div class="countdown__item">
+    <span class="countdown__value" data-unit="minutes">--</span>
+    <span class="countdown__label">min</span>
+  </div>
+  <div class="countdown__item">
+    <span class="countdown__value" data-unit="seconds">--</span>
+    <span class="countdown__label">sec</span>
+  </div>
+</div>
+
+<style>
+  .countdown {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .countdown__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 4.5rem;
+  }
+  .countdown__value {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-accent);
+  }
+  .countdown__label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+</style>
+
+<script>
+  function updateCountdown() {
+    const el = document.querySelector<HTMLElement>('.countdown');
+    if (!el || !el.dataset.target) return;
+
+    const target = new Date(el.dataset.target).getTime();
+    const now = Date.now();
+    const diff = Math.max(0, target - now);
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    const values: Record<string, number> = { days, hours, minutes, seconds };
+    for (const [unit, value] of Object.entries(values)) {
+      const span = el.querySelector<HTMLElement>(`[data-unit="${unit}"]`);
+      if (span) span.textContent = String(value).padStart(2, '0');
+    }
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>

@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import RSVPForm from '../components/RSVPForm.astro';
+import config from '../data/config.json';
+---
+
+<Base title="RSVP">
+  <section class="container page">
+    <h1>RSVP</h1>
+    <p>Merci de nous confirmer votre présence avant le {config.rsvp.dateLimite}.</p>
+    <RSVPForm />
+  </section>
+
+  <style>
+    .page {
+      padding-block: var(--space-4);
+    }
+  </style>
+</Base>

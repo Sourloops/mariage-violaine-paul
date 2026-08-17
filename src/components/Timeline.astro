@@ -1,0 +1,45 @@
+---
+import programme from '../data/programme.json';
+---
+
+<ol class="timeline">
+  {programme.map((etape) => (
+    <li class="timeline__item">
+      <span class="timeline__heure">{etape.heure}</span>
+      <div class="timeline__content">
+        <h3>{etape.titre}</h3>
+        {etape.lieu && <p class="timeline__lieu">{etape.lieu}</p>}
+        {etape.description && <p>{etape.description}</p>}
+      </div>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-left: 2px solid var(--color-accent-soft);
+  }
+  .timeline__item {
+    display: flex;
+    gap: var(--space-3);
+    padding: var(--space-2) 0 var(--space-2) var(--space-3);
+    margin-left: -2px;
+    border-left: 2px solid var(--color-accent);
+  }
+  .timeline__heure {
+    font-family: var(--font-heading);
+    color: var(--color-accent);
+    min-width: 4rem;
+    font-weight: 600;
+  }
+  .timeline__content h3 {
+    margin: 0 0 var(--space-1);
+  }
+  .timeline__lieu {
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+</style>

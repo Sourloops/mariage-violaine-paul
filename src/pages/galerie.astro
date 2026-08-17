@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+
+// TODO: ajouter les photos définitives dans public/images/ et les lister ici.
+// Deux photos de départ (lieu de réception pressenti) ont été placées dans
+// public/images/ à titre d'exemple pour amorcer la galerie.
+const photos = [
+  { src: '/images/photo_goutelas_.jpg', alt: 'Le lieu de réception' },
+  { src: '/images/photo_goutelas_2.jpg', alt: 'Le lieu de réception' },
+];
+---
+
+<Base title="Galerie">
+  <section class="container page">
+    <h1>Galerie</h1>
+    <div class="gallery">
+      {photos.map((photo) => (
+        <a href={photo.src} class="gallery__item" target="_blank" rel="noopener noreferrer">
+          <img src={photo.src} alt={photo.alt} loading="lazy" />
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <style>
+    .page {
+      padding-block: var(--space-4);
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--space-2);
+      margin-top: var(--space-3);
+    }
+    .gallery__item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      display: block;
+    }
+  </style>
+</Base>

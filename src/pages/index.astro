@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import Countdown from '../components/Countdown.astro';
+import AddToCalendarButton from '../components/AddToCalendarButton.astro';
+import config from '../data/config.json';
+
+const { prenom1, prenom2 } = config.couple;
+---
+
+<Base title="Accueil">
+  <section class="hero container">
+    <p class="hero__kicker">On se marie !</p>
+    <h1>{prenom1} &amp; {prenom2}</h1>
+    <p class="hero__date">
+      <!-- TODO: remplacer par la date confirmée, formatée en français -->
+      Le {config.dateMariage.slice(0, 10)}
+    </p>
+
+    <Countdown />
+
+    <div class="hero__cta">
+      <AddToCalendarButton />
+      <a class="hero__link" href="/rsvp/">Confirmer ma présence →</a>
+    </div>
+  </section>
+
+  <section class="container intro">
+    <h2>Notre histoire</h2>
+    <p>
+      <!-- TODO: rédiger le texte "notre histoire" -->
+      Texte à venir.
+    </p>
+  </section>
+
+  <style>
+    .hero {
+      text-align: center;
+      padding-block: var(--space-5);
+    }
+    .hero__kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-text-muted);
+      font-size: 0.85rem;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin: var(--space-1) 0;
+    }
+    .hero__date {
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-4);
+    }
+    .hero__cta {
+      margin-top: var(--space-4);
+      display: flex;
+      gap: var(--space-3);
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .hero__link {
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .intro {
+      padding-block: var(--space-4);
+      max-width: 640px;
+      margin-inline: auto;
+      text-align: center;
+    }
+  </style>
+</Base>
