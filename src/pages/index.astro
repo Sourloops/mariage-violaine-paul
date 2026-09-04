@@ -36,8 +36,8 @@ const base = import.meta.env.BASE_URL;
       <Countdown />
 
       <div class="hero__cta">
+        <a class="hero__link" href={`${base}rsvp/`}>Confirmer ma présence</a>
         <AddToCalendarButton />
-        <a class="hero__link" href={`${base}rsvp/`}>Confirmer ma présence →</a>
       </div>
     </div>
   </section>
@@ -125,9 +125,27 @@ const base = import.meta.env.BASE_URL;
       flex-wrap: wrap;
     }
     .hero__link {
-      color: #fff;
+      display: inline-block;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius);
+      background: var(--color-accent);
+      color: var(--color-cream);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .hero__link:hover {
+      opacity: 0.9;
+    }
+    .hero :global(.add-to-calendar) {
+      background: none;
+      padding: 0;
+      border-radius: 0;
+      color: var(--color-cream);
       text-decoration: underline;
       font-weight: 600;
+    }
+    .hero :global(.add-to-calendar):hover {
+      opacity: 0.85;
     }
     .hero :global(.countdown__value) {
       color: #fff;
