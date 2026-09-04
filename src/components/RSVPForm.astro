@@ -1,93 +1,26 @@
 ---
-// TODO: créer un formulaire sur https://formspree.io et remplacer
-// config.rsvp.formEndpoint par l'URL fournie (voir data/config.json).
 import config from '../data/config.json';
 
-const { formEndpoint } = config.rsvp;
+const { googleFormEmbedUrl } = config.rsvp;
 ---
 
-<form class="rsvp-form card" action={formEndpoint} method="POST">
-  <div class="field">
-    <label for="nom">Nom et prénom</label>
-    <input type="text" id="nom" name="nom" required />
-  </div>
-
-  <div class="field">
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required />
-  </div>
-
-  <fieldset class="field">
-    <legend>Serez-vous des nôtres ?</legend>
-    <label><input type="radio" name="presence" value="oui" required /> Oui, avec plaisir</label>
-    <label><input type="radio" name="presence" value="non" /> Non, je ne pourrai pas venir</label>
-  </fieldset>
-
-  <div class="field">
-    <label for="nb_personnes">Nombre de personnes (vous inclus·e)</label>
-    <input type="number" id="nb_personnes" name="nb_personnes" min="1" value="1" />
-  </div>
-
-  <fieldset class="field">
-    <legend>Choix du menu</legend>
-    <label><input type="radio" name="menu" value="standard" /> Standard</label>
-    <label><input type="radio" name="menu" value="vegetarien" /> Végétarien</label>
-  </fieldset>
-
-  <div class="field">
-    <label for="allergies">Allergies / régime particulier</label>
-    <textarea id="allergies" name="allergies" rows="3"></textarea>
-  </div>
-
-  <div class="field">
-    <label for="message">Un petit mot pour les mariés ?</label>
-    <textarea id="message" name="message" rows="3"></textarea>
-  </div>
-
-  <button type="submit">Envoyer ma réponse</button>
-</form>
+<div class="rsvp-embed card">
+  <iframe src={googleFormEmbedUrl} title="Formulaire RSVP" loading="lazy">
+    Chargement du formulaire…
+  </iframe>
+</div>
 
 <style>
-  .rsvp-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    max-width: 640px;
-  }
-  .field {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-    border: none;
+  .rsvp-embed {
     padding: 0;
-    margin: 0;
+    overflow: hidden;
+    max-width: 640px;
+    margin-inline: auto;
   }
-  label {
-    font-weight: 600;
-  }
-  fieldset label {
-    font-weight: 400;
-  }
-  input,
-  textarea {
-    font: inherit;
-    padding: var(--space-1);
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    background: var(--color-bg);
-  }
-  button {
-    align-self: flex-start;
-    padding: var(--space-2) var(--space-4);
-    border: none;
-    border-radius: var(--radius);
-    background: var(--color-accent);
-    color: white;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-  }
-  button:hover {
-    opacity: 0.9;
+  .rsvp-embed iframe {
+    width: 100%;
+    height: 1294px;
+    border: 0;
+    display: block;
   }
 </style>

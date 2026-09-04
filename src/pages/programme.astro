@@ -1,24 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 import Timeline from '../components/Timeline.astro';
-import Map from '../components/Map.astro';
-import config from '../data/config.json';
 ---
 
 <Base title="Programme">
   <section class="container page">
     <h1>Programme de la journée</h1>
     <Timeline />
-  </section>
-
-  <section class="container page">
-    <h2>Cérémonie</h2>
-    <Map adresse={config.ceremonie.adresse} label="Itinéraire vers la cérémonie" />
-  </section>
-
-  <section class="container page">
-    <h2>Réception</h2>
-    <Map adresse={config.reception.adresse} label="Itinéraire vers la réception" />
     <!-- TODO: ajouter infos parking / navettes / transport en commun -->
   </section>
 

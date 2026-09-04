@@ -2,53 +2,118 @@
 import Base from '../layouts/Base.astro';
 import Countdown from '../components/Countdown.astro';
 import AddToCalendarButton from '../components/AddToCalendarButton.astro';
+import Map from '../components/Map.astro';
 import config from '../data/config.json';
 
 const { prenom1, prenom2 } = config.couple;
+
+const dateFormatee = new Date(config.dateMariage).toLocaleDateString('fr-FR', {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+// Utilise l'adresse complète une fois confirmée, sinon le nom du lieu en attendant.
+const adresseCeremonie =
+  config.ceremonie.adresse === 'À confirmer' ? config.ceremonie.nom : config.ceremonie.adresse;
+const adresseReception =
+  config.reception.adresse === 'À confirmer' ? config.reception.nom : config.reception.adresse;
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Base title="Accueil">
-  <section class="hero container">
-    <p class="hero__kicker">On se marie !</p>
-    <h1>{prenom1} &amp; {prenom2}</h1>
-    <p class="hero__date">
-      <!-- TODO: remplacer par la date confirmée, formatée en français -->
-      Le {config.dateMariage.slice(0, 10)}
-    </p>
+  <section class="hero" style={`background-image: url(${base}images/photo_STD.jpg)`}>
+    <div class="hero__overlay"></div>
+    <div class="hero__content container">
+      <p class="hero__kicker">On se marie !</p>
+      <h1>{prenom1} &amp; {prenom2}</h1>
+      <p class="hero__date">
+        Le {dateFormatee}
+      </p>
 
-    <Countdown />
+      <Countdown />
 
-    <div class="hero__cta">
-      <AddToCalendarButton />
-      <a class="hero__link" href="/rsvp/">Confirmer ma présence →</a>
+      <div class="hero__cta">
+        <AddToCalendarButton />
+        <a class="hero__link" href={`${base}rsvp/`}>Confirmer ma présence →</a>
+      </div>
     </div>
   </section>
 
   <section class="container intro">
     <h2>Notre histoire</h2>
     <p>
-      <!-- TODO: rédiger le texte "notre histoire" -->
-      Texte à venir.
+      <!-- TODO: texte générique provisoire, à personnaliser -->
+      Une rencontre, des fous rires, des projets partagés... et aujourd'hui l'envie
+      de dire oui devant celles et ceux qui comptent le plus pour nous. Nous sommes
+      heureux de vous compter parmi nous pour célébrer cette nouvelle étape.
     </p>
   </section>
 
+  <div class="container">
+    <div class="rule--ornament">✦</div>
+  </div>
+
+  <section class="container page">
+    <h2>Cérémonie — {config.ceremonie.nom}</h2>
+    <Map adresse={adresseCeremonie} label="Itinéraire vers la cérémonie" />
+  </section>
+
+  <section class="container page">
+    <h2>Réception — {config.reception.nom}</h2>
+    <Map adresse={adresseReception} label="Itinéraire vers la réception" />
+  </section>
+
+  <section class="container rsvp-cta">
+    <a class="rsvp-cta__button" href={`${base}rsvp/`}>Confirmer ma présence</a>
+  </section>
+
   <style>
+    .page {
+      padding-block: var(--space-4);
+    }
     .hero {
+      position: relative;
       text-align: center;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #fff;
+    }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(44, 58, 74, 0.35),
+        rgba(44, 58, 74, 0.6)
+      );
+    }
+    .hero__content {
+      position: relative;
+      z-index: 1;
       padding-block: var(--space-5);
     }
     .hero__kicker {
+      font-family: var(--font-label);
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--color-text-muted);
-      font-size: 0.85rem;
+      letter-spacing: var(--tracking-wider);
+      color: rgba(245, 240, 232, 0.9);
+      font-size: 0.8rem;
     }
     .hero h1 {
       font-size: 3.5rem;
       margin: var(--space-1) 0;
+      color: #fff;
     }
     .hero__date {
-      color: var(--color-text-muted);
+      color: rgba(255, 255, 255, 0.85);
       margin-bottom: var(--space-4);
     }
     .hero__cta {
@@ -60,14 +125,41 @@ const { prenom1, prenom2 } = config.couple;
       flex-wrap: wrap;
     }
     .hero__link {
-      text-decoration: none;
+      color: #fff;
+      text-decoration: underline;
       font-weight: 600;
+    }
+    .hero :global(.countdown__value) {
+      color: #fff;
+    }
+    .hero :global(.countdown__label) {
+      color: rgba(255, 255, 255, 0.75);
     }
     .intro {
       padding-block: var(--space-4);
       max-width: 640px;
       margin-inline: auto;
       text-align: center;
+    }
+    .rsvp-cta {
+      padding-block: var(--space-5);
+      text-align: center;
+    }
+    .rsvp-cta__button {
+      display: inline-block;
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius);
+      background: var(--color-accent);
+      color: var(--color-cream);
+      text-decoration: none;
+      font-family: var(--font-label);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+    }
+    .rsvp-cta__button:hover {
+      background: var(--color-night);
+      color: var(--color-cream);
     }
   </style>
 </Base>

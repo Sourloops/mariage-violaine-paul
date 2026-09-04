@@ -1,6 +1,6 @@
 [
-  { "heure": "14:00", "titre": "Cérémonie religieuse", "lieu": "À confirmer", "description": "" },
-  { "heure": "16:00", "titre": "Cocktail", "lieu": "À confirmer", "description": "" },
-  { "heure": "19:30", "titre": "Dîner", "lieu": "À confirmer", "description": "" },
-  { "heure": "22:00", "titre": "Soirée dansante", "lieu": "À confirmer", "description": "" }
+  { "heure": "17:00", "titre": "Cérémonie religieuse", "lieu": "Église du Pic de Montverdun", "description": "" },
+  { "heure": "18:30", "titre": "Cocktail", "lieu": "Château de Goutelas", "description": "" },
+  { "heure": "20:30", "titre": "Dîner", "lieu": "Château de Goutelas", "description": "" },
+  { "heure": "23:00", "titre": "Soirée dansante", "lieu": "Château de Goutelas", "description": "" }
 ]

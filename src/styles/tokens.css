@@ -1,31 +1,56 @@
 /*
-  Design tokens — palette / typo à valider (voir "Décisions en attente"
-  dans l'architecture du projet). Ceci est un jeu de valeurs de départ
-  volontairement neutre, à remplacer une fois le style visuel choisi.
+  Design tokens — charte "L'Astrée du Forez"
+  Mariage de Violaine & Paul · Montverdun, Forez
+  Repris du design system Claude Design (charte_graphique_mariage.zip).
 */
+
 :root {
-  /* Couleurs */
-  --color-bg: #faf7f2;
-  --color-bg-alt: #ffffff;
-  --color-text: #2b2620;
-  --color-text-muted: #6b6259;
-  --color-accent: #a8763e;
-  --color-accent-soft: #e8dcc8;
-  --color-border: #e6ddd0;
+  /* ─── Couleurs primaires ──────────────────────────── */
+  --color-cream: #f5f0e8; /* Crème parchemin — fond principal */
+  --color-sand: #e8d9b0; /* Sable doré — surfaces, bordures douces */
+  --color-earth: #8b5e3c; /* Terre brûlée — texte secondaire, accents chauds */
+  --color-night: #2c3a4a; /* Nuit Forez — titres, texte principal */
 
-  /* Typo */
-  --font-heading: "Cormorant Garamond", Georgia, serif;
-  --font-body: "Jost", "Helvetica Neue", Arial, sans-serif;
+  /* ─── Couleurs secondaires (signalétique) ─────────── */
+  --color-moss: #b5c9a1; /* Mousse prairie */
+  --color-clay: #d4a98a; /* Argile rose */
+  --color-sky: #a8c4d4; /* Ciel Forez */
+  --color-flame: #f2a623; /* Or flamme — accents lumineux, à utiliser avec parcimonie */
+  --color-ivory: #f0e8d5; /* Ivoire chaud — surfaces (cartes, en-tête) */
+  --color-gold-border: #c8aa80; /* Or patiné — filet principal */
 
-  /* Rythme */
+  /* ─── Alias utilisés dans le reste du site ────────── */
+  --color-bg: var(--color-cream);
+  --color-bg-alt: var(--color-ivory);
+  --color-text: var(--color-night);
+  --color-text-muted: var(--color-earth);
+  --color-accent: var(--color-earth);
+  --color-accent-soft: var(--color-sand);
+  --color-border: var(--color-gold-border);
+
+  /* ─── Familles typographiques ─────────────────────── */
+  --font-heading: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --font-label: 'Cinzel', 'Palatino Linotype', 'Book Antiqua', serif;
+
+  /* ─── Letter-spacing ───────────────────────────────── */
+  --tracking-normal: 0.02em;
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.2em; /* labels Cinzel */
+  --tracking-widest: 0.4em; /* ornements */
+
+  /* ─── Rythme ───────────────────────────────────────── */
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
   --space-4: 2.5rem;
   --space-5: 4rem;
 
-  --radius: 10px;
+  --radius: 6px; /* max 8-10px selon la charte, on reste sobre */
   --max-width: 1080px;
+
+  --rule-thin: 0.5px solid var(--color-sand);
+  --rule-medium: 1px solid var(--color-gold-border);
 }
 
 * {
@@ -42,20 +67,25 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 h1,
 h2,
 h3 {
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: var(--tracking-normal);
   color: var(--color-text);
   line-height: 1.2;
 }
 
 a {
   color: var(--color-accent);
+}
+
+a:hover {
+  color: var(--color-night);
 }
 
 .container {
@@ -66,7 +96,37 @@ a {
 
 .card {
   background: var(--color-bg-alt);
-  border: 1px solid var(--color-border);
+  border: var(--rule-medium);
   border-radius: var(--radius);
   padding: var(--space-3);
+}
+
+/* Label éditorial — Cinzel, petites capitales, tracking généreux */
+.label,
+.eyebrow {
+  font-family: var(--font-label);
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-earth);
+}
+
+/* Ornement de séparation : ✦ ── ✦ */
+.rule--ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  color: var(--color-gold-border);
+  font-size: 0.85rem;
+  margin: var(--space-4) 0;
+}
+.rule--ornament::before,
+.rule--ornament::after {
+  content: '';
+  flex: 1;
+  height: 0;
+  border-top: var(--rule-thin);
+  max-width: 120px;
 }

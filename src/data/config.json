@@ -3,25 +3,24 @@
     "prenom1": "Violaine",
     "prenom2": "Paul"
   },
-  "_comment_date": "TODO: confirmer la date et l'heure exactes du jour J (ISO 8601, avec fuseau horaire) pour le compte à rebours.",
-  "dateMariage": "2027-06-19T14:00:00+02:00",
+  "dateMariage": "2027-06-19T17:00:00+02:00",
   "ceremonie": {
     "type": "religieuse",
-    "_comment": "TODO: confirmer le lieu exact et l'adresse.",
-    "nom": "À confirmer",
+    "nom": "Église du Pic de Montverdun",
+    "_comment_adresse": "TODO: adresse complète à ajouter.",
     "adresse": "À confirmer",
-    "heure": "14:00"
+    "heure": "17:00"
   },
   "reception": {
-    "_comment": "Nom déduit des photos fournies (photo_goutelas_*.jpg) — à confirmer.",
-    "nom": "Château du Goutelas (à confirmer)",
+    "nom": "Château de Goutelas",
+    "_comment_adresse": "TODO: adresse complète à ajouter.",
     "adresse": "À confirmer",
-    "heure": "18:00"
+    "heure": "18:30"
   },
   "rsvp": {
-    "_comment": "TODO: créer un formulaire sur https://formspree.io (gratuit jusqu'à 50 soumissions/mois) et remplacer par l'endpoint fourni.",
-    "formEndpoint": "https://formspree.io/f/REPLACE_ME",
-    "dateLimite": "À définir"
+    "_comment": "Google Form du mariage, hébergé sur le Drive de Paul. Réponses collectées automatiquement dans un Google Sheet.",
+    "googleFormEmbedUrl": "https://docs.google.com/forms/d/e/1FAIpQLSc9svpkdunBD8zXUt1abeemM-KeuCPeEiOM9kfuvxSiPuKA7g/viewform?embedded=true",
+    "dateLimite": "1er décembre 2026"
   },
   "playlist": {
     "_comment": "TODO: remplacer par l'URL d'embed de la playlist Spotify collaborative.",
