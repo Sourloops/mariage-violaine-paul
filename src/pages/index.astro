@@ -75,12 +75,12 @@ const base = import.meta.env.BASE_URL;
   </div>
 
   <section class="container page">
-    <h2>Cérémonie — {config.ceremonie.nom}</h2>
+    <h2>Cérémonie — {config.ceremonie.nom}, {config.ceremonie.adresse}</h2>
     <Map adresse={adresseCeremonie} label="Itinéraire vers la cérémonie" />
   </section>
 
   <section class="container page">
-    <h2>Réception — {config.reception.nom}</h2>
+    <h2>Réception — {config.reception.nom}, {config.reception.adresse}</h2>
     <Map adresse={adresseReception} label="Itinéraire vers la réception" />
   </section>
 
