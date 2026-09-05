@@ -7,10 +7,10 @@ Rien de ce qui suit n'est définitif : à revoir avec Claude Code en local.
 
 - [x] Date et heure exactes du mariage : 19 juin 2027, 17h
       (`src/data/config.json` → `dateMariage`)
-- [x] Cérémonie religieuse confirmée : Église du Pic de Montverdun
-      (`ceremonie`) — [ ] adresse complète (rue, code postal) encore à ajouter
-- [x] Réception confirmée : Château de Goutelas (`reception`) —
-      [ ] adresse complète encore à ajouter
+- [x] Cérémonie religieuse confirmée : Le Prieuré de Montverdun, 42130
+      Montverdun (`ceremonie`)
+- [x] Réception confirmée : Château de Goutelas, 277 Goutelas, 42130 Marcoux
+      (`reception`)
 - [x] Texte "notre histoire" — histoire réelle du couple rédigée
       (`src/pages/index.astro`)
 - [x] Programme provisoire cohérent (cérémonie 17h → cocktail 18h30 → dîner

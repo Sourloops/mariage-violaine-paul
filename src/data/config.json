@@ -6,15 +6,13 @@
   "dateMariage": "2027-06-19T17:00:00+02:00",
   "ceremonie": {
     "type": "religieuse",
-    "nom": "Église du Pic de Montverdun",
-    "_comment_adresse": "TODO: adresse complète à ajouter.",
-    "adresse": "À confirmer",
+    "nom": "Le Prieuré de Montverdun",
+    "adresse": "42130 Montverdun, France",
     "heure": "17:00"
   },
   "reception": {
     "nom": "Château de Goutelas",
-    "_comment_adresse": "TODO: adresse complète à ajouter.",
-    "adresse": "À confirmer",
+    "adresse": "277 Goutelas, 42130 Marcoux, France",
     "heure": "18:30"
   },
   "rsvp": {
