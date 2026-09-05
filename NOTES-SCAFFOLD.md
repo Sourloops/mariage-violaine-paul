@@ -48,12 +48,25 @@ Rien de ce qui suit n'est définitif : à revoir avec Claude Code en local.
       depuis l'export Claude Design (`charte_graphique_mariage.zip`) et
       appliquée dans `src/styles/tokens.css` (couleurs, polices Cormorant
       Garamond / EB Garamond / Cinzel, filets, pas d'ombres portées).
-- [ ] Nom de domaine perso à acheter (décidé le 2026-09-04, pas encore fait).
-      Une fois acheté : mettre `site` sur le nouveau domaine dans
-      `astro.config.mjs`, **retirer** la ligne `base`, ajouter un fichier
-      `public/CNAME` contenant le domaine, configurer les DNS chez le
-      registrar (CNAME vers `sourloops.github.io`), puis activer "Enforce
-      HTTPS" dans Settings → Pages du repo GitHub.
+- [ ] Nom de domaine perso : **violaine-et-paul.fr** acheté chez OVH le
+      2026-09-05 (commande en cours de validation côté OVH).
+      Étapes une fois le domaine actif dans le manager OVH :
+      1. Dans la zone DNS OVH, supprimer les enregistrements par défaut sur
+         `@` (souvent une redirection OVH) et ajouter 4 enregistrements A sur
+         `@` pointant vers les IPs GitHub Pages :
+         `185.199.108.153`, `185.199.109.153`, `185.199.110.153`,
+         `185.199.111.153`.
+      2. (Recommandé) Ajouter un enregistrement CNAME `www` → `sourloops.github.io.`
+         pour que `www.violaine-et-paul.fr` fonctionne aussi.
+      3. Attendre la propagation DNS (jusqu'à 24-48h, souvent plus rapide).
+      4. Côté code : mettre `site: 'https://violaine-et-paul.fr'` dans
+         `astro.config.mjs`, **retirer** la ligne `base`, ajouter un fichier
+         `public/CNAME` contenant `violaine-et-paul.fr`, puis committer/pousser.
+      5. Dans Settings → Pages du repo GitHub, vérifier que le domaine custom
+         est reconnu puis activer "Enforce HTTPS" (peut prendre quelques
+         minutes après la propagation DNS).
+      ⚠️ Ne pas faire l'étape 4 avant que les DNS (étapes 1-3) soient en place,
+      sinon le site cassé le temps que la propagation se fasse.
 
 ## Technique
 
