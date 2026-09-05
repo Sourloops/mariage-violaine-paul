@@ -11,8 +11,8 @@ Rien de ce qui suit n'est définitif : à revoir avec Claude Code en local.
       (`ceremonie`) — [ ] adresse complète (rue, code postal) encore à ajouter
 - [x] Réception confirmée : Château de Goutelas (`reception`) —
       [ ] adresse complète encore à ajouter
-- [x] Texte "notre histoire" — ébauche générique rédigée
-      (`src/pages/index.astro`), à personnaliser avec l'histoire réelle du couple
+- [x] Texte "notre histoire" — histoire réelle du couple rédigée
+      (`src/pages/index.astro`)
 - [x] Programme provisoire cohérent (cérémonie 17h → cocktail 18h30 → dîner
       20h30 → soirée 23h, tous au Château de Goutelas) — horaires à ajuster si besoin
       (`src/data/programme.json`)

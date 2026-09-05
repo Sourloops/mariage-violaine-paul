@@ -45,10 +45,28 @@ const base = import.meta.env.BASE_URL;
   <section class="container intro">
     <h2>Notre histoire</h2>
     <p>
-      <!-- TODO: texte générique provisoire, à personnaliser -->
-      Une rencontre, des fous rires, des projets partagés... et aujourd'hui l'envie
-      de dire oui devant celles et ceux qui comptent le plus pour nous. Nous sommes
-      heureux de vous compter parmi nous pour célébrer cette nouvelle étape.
+      Notre histoire commence à Paris, juste après le Covid. Des soirées qui n'en
+      finissaient pas, des amis retrouvés, une vie parisienne insouciante où tout
+      semblait possible.
+    </p>
+    <p>
+      Puis il y a eu le départ pour Lyon, avec l'envie de construire quelque chose
+      ensemble — sans trop savoir encore quoi, ni comment.
+    </p>
+    <p>
+      Alors on a pris le temps. Le temps de se poser les bonnes questions, et d'y
+      répondre par un aller simple : six mois de voyage, à deux, pour se retrouver
+      et se projeter.
+    </p>
+    <p>
+      On en est revenus la tête pleine de projets — et le cœur un peu plus grand
+      aussi : on était partis à deux, on est revenus à trois, avec l'arrivée de
+      Georges !
+    </p>
+    <p>
+      Parmi tous ces projets, il y en avait un qui nous tenait particulièrement à
+      cœur : se marier. C'est pourquoi on est si heureux de vous envoyer ce save
+      the date !
     </p>
   </section>
 
@@ -157,7 +175,13 @@ const base = import.meta.env.BASE_URL;
       padding-block: var(--space-4);
       max-width: 640px;
       margin-inline: auto;
+      text-align: left;
+    }
+    .intro h2 {
       text-align: center;
+    }
+    .intro p + p {
+      margin-top: var(--space-2);
     }
     .rsvp-cta {
       padding-block: var(--space-5);
