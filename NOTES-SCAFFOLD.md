@@ -17,13 +17,13 @@ Rien de ce qui suit n'est définitif : à revoir avec Claude Code en local.
       20h30 → soirée 23h, tous au Château de Goutelas) — horaires à ajuster si besoin
       (`src/data/programme.json`)
 - [x] FAQ : dress code précisé ("aucun imposé, tenue élégante") — [ ] enfants
-      bienvenus ou non encore à trancher, [ ] lien cagnotte à ajouter
+      bienvenus ou non encore à trancher
       (`src/data/faq.json`)
 - [ ] Liste des hébergements suggérés — pas encore choisis, placeholder en
       attente (`src/data/hebergements.json`)
 - [x] Date limite de réponse RSVP : 1er décembre 2026 (`config.rsvp.dateLimite`)
-- [ ] Lien vers la cagnotte / liste de mariage MilleMercisMariage — pas encore
-      créée (page FAQ)
+- [x] Lien vers la liste de mariage MilleMercisMariage ajouté dans la FAQ
+      (`src/data/faq.json`) : https://www.millemercismariage.com/violaine-et-paul/liste.html
 
 ## Intégrations externes à brancher
 

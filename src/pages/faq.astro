@@ -10,7 +10,7 @@ import faq from '../data/faq.json';
       {faq.map((item) => (
         <div class="faq-item card">
           <dt>{item.question}</dt>
-          <dd>{item.reponse}</dd>
+          <dd set:html={item.reponse} />
         </div>
       ))}
     </dl>

@@ -13,7 +13,7 @@
   },
   {
     "question": "Faut-il apporter un cadeau ?",
-    "reponse": "Notre cagnotte et liste de mariage sont disponibles sur MilleMercisMariage. Lien à ajouter."
+    "reponse": "Notre liste de mariage est disponible sur <a href=\"https://www.millemercismariage.com/violaine-et-paul/liste.html\" target=\"_blank\" rel=\"noopener noreferrer\">MilleMercisMariage</a>."
   },
   {
     "question": "Où se garer / comment venir ?",
