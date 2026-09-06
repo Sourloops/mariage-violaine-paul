@@ -15,7 +15,7 @@
     { "id": "double-12", "type": "double", "nom": "Chambre double", "capacite": 2, "prix_par_nuit": 50, "statut": "disponible" },
     { "id": "double-13", "type": "double", "nom": "Chambre double", "capacite": 2, "prix_par_nuit": 50, "statut": "disponible" },
     { "id": "double-14", "type": "double", "nom": "Chambre double", "capacite": 2, "prix_par_nuit": 50, "statut": "disponible" },
-    { "id": "double-15", "type": "double", "nom": "Chambre double", "capacite": 2, "prix_par_nuit": 50, "statut": "disponible" },
+    { "id": "double-15", "type": "double", "nom": "Chambre double", "capacite": 2, "prix_par_nuit": 50, "statut": "reservee" },
     { "id": "double-16", "type": "double", "nom": "Chambre double", "capacite": 2, "prix_par_nuit": 50, "statut": "reservee" },
     { "id": "double-17", "type": "double", "nom": "Chambre double", "capacite": 2, "prix_par_nuit": 50, "statut": "reservee" },
     { "id": "double-18", "type": "double", "nom": "Chambre double", "capacite": 2, "prix_par_nuit": 50, "statut": "reservee" },
