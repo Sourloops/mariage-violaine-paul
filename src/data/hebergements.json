@@ -1,9 +1,42 @@
 [
   {
-    "nom": "À compléter",
-    "type": "Hôtel",
-    "distance": "",
-    "lien": "",
-    "codePartenaire": ""
+    "nom": "L'Éveil des Sens",
+    "adresse": "2 place du Lavoir, 42130 Trelins",
+    "type": "Hôtel-restaurant (auberge)",
+    "distance": "1 km du Château de Goutelas (environ 3 min en voiture)",
+    "description": "Cuisine traditionnelle de produits locaux, terrasse, climatisation, parking et wifi, espace jeux et chaises hautes bébé, animaux acceptés.",
+    "lien": "http://www.xn--veil-des-sens-9gb.fr/?page_id=46"
+  },
+  {
+    "nom": "Le Passagran",
+    "adresse": "2 rue Louis Gauchon, 42130 Boën-sur-Lignon",
+    "type": "Maison d'hôtes",
+    "distance": "3 km du Château de Goutelas (environ 6 min en voiture)",
+    "description": "Bâtiment Art déco, sélection Figaro. Spa japonais, sauna, jacuzzi, espace fitness, table d'hôtes de produits locaux, climatisation, wifi et parking gratuits, location de vélos, massages sur réservation, 2CV vintage pour excursions. Noté 9,8/10 sur Booking (96 avis).",
+    "lien": "https://www.lepassagran.fr/"
+  },
+  {
+    "nom": "La Maison de Famille",
+    "adresse": "2 place de l'Hôtel de Ville, 42130 Boën-sur-Lignon",
+    "type": "Chambres d'hôtes",
+    "distance": "3 km du Château de Goutelas (environ 6 min en voiture)",
+    "description": "Chambres d'hôtes en plein centre-ville de Boën-sur-Lignon. Renseignements détaillés à confirmer directement auprès de l'établissement.",
+    "lien": "https://maps.app.goo.gl/XDjGhhj1Rbx4EkJv7"
+  },
+  {
+    "nom": "Camping du Surizet",
+    "adresse": "31 rue du Surizet, 42600 Montbrison",
+    "type": "Camping / hébergements insolites",
+    "distance": "19 km du Château de Goutelas (environ 23 min en voiture)",
+    "description": "Chalets 6 ou 8 personnes, tente safari, cabane sur pilotis ou emplacements nus. Une option plus originale et économique, entre nature et confort.",
+    "lien": "https://www.campingdusurizet.fr/bnb/bnb-1-1"
+  },
+  {
+    "nom": "Logis Hôtel O Lodge",
+    "adresse": "Lieu-dit Naconne, 42110 Cleppé",
+    "type": "Hôtel 3 étoiles (Logis)",
+    "distance": "20 km du Château de Goutelas (environ 23 min en voiture)",
+    "description": "Piscine extérieure, espace bien-être (sauna, jacuzzi), restaurant de cuisine française avec petit-déjeuner en terrasse, wifi et parking gratuits, 12 chambres avec vue jardin.",
+    "lien": "https://www.booking.com/hotel/fr/lodge.fr.html"
   }
 ]

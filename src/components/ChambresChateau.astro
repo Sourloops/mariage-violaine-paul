@@ -1,0 +1,179 @@
+---
+import data from '../data/chambres.json';
+
+const { chambres, google_form_url, google_form_urls_prerempli, delai_paiement_jours, moyens_paiement, paiement } = data;
+
+const ordreTypes = ['simple', 'double', 'triple'];
+const groupes = ordreTypes
+  .map((type) => {
+    const membres = chambres.filter((c) => c.type === type);
+    if (membres.length === 0) return null;
+    const disponibles = membres.filter((c) => c.statut === 'disponible').length;
+    return {
+      type,
+      nom: membres[0].nom,
+      capacite: membres[0].capacite,
+      prixParNuit: membres[0].prix_par_nuit,
+      membres,
+      disponibles,
+      lienFormulaire: google_form_urls_prerempli?.[type] ?? google_form_url ?? null,
+    };
+  })
+  .filter(Boolean);
+
+const statutLabel = {
+  disponible: 'disponible',
+  en_attente: 'en attente de confirmation',
+  reservee: 'réservée',
+};
+---
+
+<div class="chambres-chateau">
+  <p>
+    Un nombre limité de chambres est disponible directement au château. Une demande via le
+    formulaire ne garantit pas la chambre : nous vous confirmons la disponibilité{delai_paiement_jours ? ` et les modalités de paiement sous ${delai_paiement_jours} jours` : ' et les modalités de paiement'}, par ordre d'arrivée des demandes.
+    {moyens_paiement && moyens_paiement.length > 0 && (
+      <> Moyens de paiement acceptés : {moyens_paiement.join(', ')}.</>
+    )}
+  </p>
+
+  <div class="chambres-grid">
+    {groupes.map((g) => (
+      <div class="card chambre-card">
+        <h3>{g.nom}</h3>
+        <p class="chambre-meta">
+          {g.capacite} personne{g.capacite > 1 ? 's' : ''} ·{' '}
+          {g.prixParNuit
+            ? `${g.prixParNuit} € / chambre${g.capacite > 1 && g.type !== 'double' ? ` (${g.prixParNuit / g.capacite} €/pers.)` : ''}`
+            : 'prix à venir'}
+        </p>
+
+        <div class="chambre-pastilles" role="list" aria-label={`Disponibilité des ${g.nom.toLowerCase()}s`}>
+          {g.membres.map((c) => (
+            <span
+              class={`pastille pastille--${c.statut}`}
+              role="listitem"
+              title={statutLabel[c.statut]}
+            />
+          ))}
+        </div>
+        <p class="chambre-compteur">{g.disponibles} disponible{g.disponibles > 1 ? 's' : ''} / {g.membres.length}</p>
+
+        {g.lienFormulaire ? (
+          <a href={g.lienFormulaire} target="_blank" rel="noopener noreferrer">Demander cette chambre →</a>
+        ) : (
+          <span class="chambre-formulaire-a-venir">Formulaire de demande à venir</span>
+        )}
+      </div>
+    ))}
+  </div>
+
+  {paiement && (
+    <details class="paiement">
+      <summary>Modalités de paiement</summary>
+      <div class="paiement-content">
+        {paiement.wero && (
+          <p>
+            <strong>Wero</strong> — à {paiement.wero.beneficiaire},{' '}
+            <a href={`tel:${paiement.wero.telephone.replace(/\s/g, '')}`}>{paiement.wero.telephone}</a>
+          </p>
+        )}
+        {paiement.virement && (
+          <p>
+            <strong>Virement</strong> — {paiement.virement.beneficiaire} · IBAN <code>{paiement.virement.iban}</code> · BIC <code>{paiement.virement.bic}</code>
+            <br />
+            <span class="paiement-banque">{paiement.virement.banque_nom}, {paiement.virement.banque_adresse}{paiement.virement.bic_correspondant && ` · BIC correspondant ${paiement.virement.bic_correspondant}`}</span>
+          </p>
+        )}
+      </div>
+    </details>
+  )}
+</div>
+
+<style>
+  .chambres-chateau {
+    margin-bottom: var(--space-4);
+  }
+  .chambres-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+  }
+  .chambre-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  .chambre-meta {
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+  .chambre-pastilles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: var(--space-1);
+  }
+  .pastille {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .pastille--disponible {
+    background: var(--color-moss);
+  }
+  .pastille--en_attente {
+    background: var(--color-flame);
+  }
+  .pastille--reservee {
+    background: var(--color-text-muted);
+    opacity: 0.5;
+  }
+  .chambre-compteur {
+    margin: 0;
+    font-size: 0.9em;
+    color: var(--color-text-muted);
+  }
+  .chambre-card a,
+  .chambre-formulaire-a-venir {
+    margin-top: auto;
+  }
+  .chambre-formulaire-a-venir {
+    color: var(--color-text-muted);
+    font-style: italic;
+    font-size: 0.9em;
+  }
+  .paiement {
+    margin-top: var(--space-3);
+    font-size: 0.9em;
+  }
+  .paiement summary {
+    cursor: pointer;
+    color: var(--color-text-muted);
+    width: fit-content;
+  }
+  .paiement summary:hover {
+    color: var(--color-accent);
+  }
+  .paiement-content {
+    margin-top: var(--space-2);
+    padding-left: var(--space-2);
+    border-left: var(--rule-thin);
+  }
+  .paiement-content p {
+    margin: 0 0 var(--space-1);
+  }
+  .paiement-content p:last-child {
+    margin-bottom: 0;
+  }
+  .paiement-content code {
+    font-family: inherit;
+    color: var(--color-text);
+  }
+  .paiement-banque {
+    color: var(--color-text-muted);
+    font-size: 0.9em;
+  }
+</style>

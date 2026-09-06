@@ -1,0 +1,112 @@
+---
+const base = import.meta.env.BASE_URL;
+const fichiers = [
+  'Chateau-Goutelas-32-1-720x720.jpg',
+  'P1010561-720x720.jpg',
+  'Chateau-Goutelas-40-720x720.jpg',
+  'Chateau-Goutelas-41-1-720x720.jpg',
+];
+const images = fichiers.map((f) => `${base}images/chambres/${f}`);
+---
+
+<div class="carousel" data-carousel>
+  <button class="carousel__nav carousel__nav--prev" type="button" data-carousel-prev aria-label="Photo précédente">‹</button>
+  <div class="carousel__track" data-carousel-track>
+    {images.map((src, i) => (
+      <div class="carousel__slide">
+        <img src={src} alt={`Exemple de chambre au château, photo ${i + 1}`} loading="lazy" decoding="async" />
+      </div>
+    ))}
+  </div>
+  <button class="carousel__nav carousel__nav--next" type="button" data-carousel-next aria-label="Photo suivante">›</button>
+</div>
+<p class="carousel__note">Photos à titre d'exemple, l'attribution précise des chambres se fait après confirmation.</p>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((carousel) => {
+    const track = carousel.querySelector<HTMLElement>('[data-carousel-track]');
+    const prev = carousel.querySelector<HTMLButtonElement>('[data-carousel-prev]');
+    const next = carousel.querySelector<HTMLButtonElement>('[data-carousel-next]');
+    if (!track) return;
+
+    const atEnd = () => track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    const atStart = () => track.scrollLeft <= 4;
+
+    const scrollByOne = (dir: number) => {
+      if (dir > 0 && atEnd()) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+        return;
+      }
+      if (dir < 0 && atStart()) {
+        track.scrollTo({ left: track.scrollWidth - track.clientWidth, behavior: 'smooth' });
+        return;
+      }
+      const slide = track.querySelector<HTMLElement>('.carousel__slide');
+      const amount = slide ? slide.getBoundingClientRect().width + 12 : track.clientWidth;
+      track.scrollBy({ left: dir * amount, behavior: 'smooth' });
+    };
+
+    prev?.addEventListener('click', () => scrollByOne(-1));
+    next?.addEventListener('click', () => scrollByOne(1));
+  });
+</script>
+
+<style>
+  .carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin-top: var(--space-3);
+  }
+  .carousel__track {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    border-radius: var(--radius);
+    -webkit-overflow-scrolling: touch;
+  }
+  .carousel__track::-webkit-scrollbar {
+    height: 6px;
+  }
+  .carousel__track::-webkit-scrollbar-thumb {
+    background: var(--color-gold-border);
+    border-radius: 3px;
+  }
+  .carousel__slide {
+    flex: 0 0 auto;
+    width: min(85%, 420px);
+    scroll-snap-align: center;
+  }
+  .carousel__slide img {
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: var(--rule-thin);
+  }
+  .carousel__nav {
+    flex: 0 0 auto;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: var(--rule-medium);
+    background: var(--color-bg-alt);
+    color: var(--color-text);
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .carousel__nav:hover {
+    border-color: var(--color-gold-border);
+  }
+  .carousel__note {
+    margin: var(--space-1) 0 0;
+    font-size: 0.85em;
+    font-style: italic;
+    color: var(--color-text-muted);
+  }
+</style>

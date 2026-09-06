@@ -1,21 +1,30 @@
 ---
 import Base from '../layouts/Base.astro';
 import hebergements from '../data/hebergements.json';
+import ChambresChateau from '../components/ChambresChateau.astro';
+import CarouselChambres from '../components/CarouselChambres.astro';
 ---
 
 <Base title="Hébergements">
   <section class="container page">
     <h1>Où dormir ?</h1>
-    <p>Quelques suggestions d'hébergements à proximité.</p>
+
+    <h2>Chambres au château</h2>
+    <CarouselChambres />
+    <ChambresChateau />
+
+    <h2>À proximité</h2>
+    <p>Quelques suggestions d'hébergements à proximité pour les invités qui préfèrent loger ailleurs.</p>
 
     <div class="hebergement-grid">
       {hebergements.map((h) => (
-        <div class="card">
+        <div class="card hebergement-card">
           <h3>{h.nom}</h3>
-          <p class="hebergement-type">{h.type}</p>
-          {h.distance && <p>{h.distance}</p>}
-          {h.codePartenaire && <p>Code partenaire : <strong>{h.codePartenaire}</strong></p>}
-          {h.lien && <a href={h.lien} target="_blank" rel="noopener noreferrer">Réserver →</a>}
+          {h.type && <p class="hebergement-type">{h.type}</p>}
+          {h.adresse && <p class="hebergement-adresse">{h.adresse}</p>}
+          {h.distance && <p class="hebergement-distance">{h.distance}</p>}
+          {h.description && <p class="hebergement-description">{h.description}</p>}
+          {h.lien && <a href={h.lien} target="_blank" rel="noopener noreferrer">Réserver / voir le site →</a>}
         </div>
       ))}
     </div>
@@ -31,9 +40,32 @@ import hebergements from '../data/hebergements.json';
       gap: var(--space-3);
       margin-top: var(--space-3);
     }
+    .hebergement-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
     .hebergement-type {
       color: var(--color-text-muted);
-      margin: 0 0 var(--space-1);
+      margin: 0;
+      font-style: italic;
+    }
+    .hebergement-adresse {
+      color: var(--color-text-muted);
+      margin: 0;
+      font-size: 0.9em;
+    }
+    .hebergement-distance {
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.05em;
+      color: var(--color-accent);
+    }
+    .hebergement-description {
+      margin: 0;
+    }
+    .hebergement-card a {
+      margin-top: auto;
     }
   </style>
 </Base>
