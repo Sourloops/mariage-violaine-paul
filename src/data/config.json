@@ -21,8 +21,8 @@
     "dateLimite": "1er décembre 2026"
   },
   "playlist": {
-    "_comment": "TODO: remplacer par l'URL d'embed de la playlist Spotify collaborative.",
-    "spotifyEmbedUrl": ""
+    "spotifyEmbedUrl": "https://open.spotify.com/embed/playlist/4kLExkkCQYZu3sG4FrNMJ7?utm_source=generator",
+    "spotifyUrl": "https://open.spotify.com/playlist/4kLExkkCQYZu3sG4FrNMJ7"
   },
   "contact": {
     "email": "paul.moreau00@gmail.com"

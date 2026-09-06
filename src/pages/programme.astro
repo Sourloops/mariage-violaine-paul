@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Timeline from '../components/Timeline.astro';
+import SpotifyEmbed from '../components/SpotifyEmbed.astro';
 ---
 
 <Base title="Programme">
@@ -8,6 +9,12 @@ import Timeline from '../components/Timeline.astro';
     <h1>Programme de la journée</h1>
     <Timeline />
     <!-- TODO: ajouter infos parking / navettes / transport en commun -->
+  </section>
+
+  <section class="container page">
+    <h2>Playlist collaborative</h2>
+    <p>Ajoutez vos morceaux préférés à notre playlist, on les passera pendant la soirée !</p>
+    <SpotifyEmbed />
   </section>
 
   <style>
