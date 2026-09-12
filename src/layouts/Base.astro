@@ -10,7 +10,7 @@ interface Props {
 const { title, description = "Le mariage de Violaine & Paul" } = Astro.props;
 const { prenom1, prenom2 } = config.couple;
 
-// Programme, Hébergements et FAQ sont retirés du menu le temps d'en finaliser
+// Programme et Hébergements sont retirés du menu le temps d'en finaliser
 // le contenu — les pages existent toujours, elles restent juste hors navigation.
 const base = import.meta.env.BASE_URL;
 
@@ -23,6 +23,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 const nav = [
   { href: base, label: 'Accueil' },
   { href: `${base}galerie/`, label: 'Galerie' },
+  { href: `${base}faq/`, label: 'FAQ' },
   { href: `${base}rsvp/`, label: 'RSVP' },
 ];
 ---
