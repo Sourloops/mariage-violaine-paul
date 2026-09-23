@@ -57,7 +57,7 @@ const statutLabel = {
             />
           ))}
         </div>
-        <p class="chambre-compteur">{g.disponibles} disponible{g.disponibles > 1 ? 's' : ''} / {g.membres.length}</p>
+        <p class="chambre-compteur">{g.disponibles} chambre{g.disponibles > 1 ? 's' : ''} disponible{g.disponibles > 1 ? 's' : ''} / {g.membres.length} chambre{g.membres.length > 1 ? 's' : ''}</p>
 
         {g.lienFormulaire ? (
           <a href={g.lienFormulaire} target="_blank" rel="noopener noreferrer">Demander cette chambre →</a>
