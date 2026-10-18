@@ -65,6 +65,6 @@ Rien de ce qui suit n'est définitif : à revoir avec Claude Code en local.
       accessible sur le domaine perso `https://violaine-et-paul.fr` (ancienne
       URL `https://sourloops.github.io/mariage-violaine-paul/` conservée en
       redirection par GitHub Pages).
-- [x] Programme, Hébergements et FAQ retirés du menu de navigation
-      (`src/layouts/Base.astro`) le temps d'en finaliser le contenu — les
-      pages restent buildées et accessibles par URL directe.
+- [x] Programme retiré du menu de navigation (`src/layouts/Base.astro`) le
+      temps d'en finaliser le contenu — la page reste buildée et accessible
+      par URL directe. FAQ et Hébergements sont de nouveau dans le menu.
